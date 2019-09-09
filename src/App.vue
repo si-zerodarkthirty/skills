@@ -1,25 +1,55 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="font-main">
+    <Header />
+    <main class="mx-auto">
+      <router-view :key="$route.path" />
+    </main>
+    <Footer />
   </div>
 </template>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
 
-#nav
-  padding 30px
-  a
+<script>
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+export default {
+  components: {
+    Header,
+    Footer
+  }
+}
+</script>
+
+<style lang="stylus">
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+body
+  font-size 15px
+  button
     font-weight bold
-    color #2c3e50
-    &.router-link-exact-active
-      color #42b983
+    font-size .875rem
+    display block
+  button:focus
+    outline 0
+  input:focus,
+  textarea:focus
+    outline none
+  li
+    list-style none
+
+main
+  width 95%
+  max-width 1500px
+  min-height 800px
+  margin 6rem 0
+  .fade-enter-active,
+  .fade-leave-active
+    transition-duration 0.2s
+    transition-property opacity
+    transition-timing-function ease
+  .fade-enter,
+  .fade-leave-active
+    opacity 0
+    
+nav
+  button
+    color #cbd5e0
 </style>
